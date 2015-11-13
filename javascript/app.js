@@ -56,10 +56,12 @@ function bootstrapSpotifySearch(){
   });
 }
 
+//helper stuff
+
 /* COMPLETE THIS FUNCTION! */
 function displayAlbumsAndTracks(event) {
   var appendToMe = $('#albums-and-tracks');
-  var artistID = $(event.target).attr('data-spotify-id');
+  var artistID = $(this).attr('data-spotify-id'); //changed 'event.target' to 'this' to fix bug introduced by <b> tag
   console.log(artistID); //artistID is sometimes undefined
   var albumsRequest;
   albumsRequest = $.ajax({
@@ -67,8 +69,10 @@ function displayAlbumsAndTracks(event) {
     dataType:'json',
     url: 'https://api.spotify.com/v1/artists/'+artistID+'/albums?limit=4'
   });
+
   albumsRequest.done(function(data){
     appendToMe.html('');
+
     data.items.forEach(function(album){
       var albumLi = $('<li><b>' + album.name + '</b></li>');
       var releaseDateRequest = $.ajax({
@@ -76,18 +80,32 @@ function displayAlbumsAndTracks(event) {
         dataType:'json',
         url:'https://api.spotify.com/v1/albums/'+album.id
       });
+
       releaseDateRequest.done(function(data){
         albumLi.append(' released on ' + data.release_date + '<ul id="'+data.id+'"></ul>');
         appendToMe.append(albumLi);
+        //data is the album object with id string identifying the album and tracks object (with an items array containing track objects with names)
         data.tracks.items.forEach(function(track){
           var appendTrackHere = $('#'+data.id);
           appendTrackHere.append('<li>'+track.name+'</li>');
         });
+
       });
+
     });
-  });
+  }); // albumsRequest.done()
+
 }
 
+
+/*
+var helper = {};
+helper.appendTrack = function(track){
+  var appendTrackHere = $('#'+data.id);
+  appendTrackHere.append('<li>'+track.name+'</li>');
+  console.log(data);
+};
+*/
 
 
 
