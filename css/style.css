@@ -1,19 +1,55 @@
 body{
 	margin:40px auto;
-	max-width:650px;
+	max-width:1100px;
 	line-height:1.6;
 	font-size:18px;
 	color:#444;
 	padding:0 10px;
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	color:#2ebd59;
 }
 
 h1, h2, h3{
-	line-height:1.2
+	line-height:1;
 }
 
 #q-results li {
-	color: #006fff;
+	/*color: #006fff;*/
 	cursor: pointer;
-	text-decoration: underline;
+	/*text-decoration: underline;*/
+}
+
+#spotify-q-button {
+	background: #2ebd59;
+	border: 0 none;
+	color:white;
+	border-radius: 2px;
+	font-size: 125%;
+	padding:5px;
+	outline:none;
+}
+
+#spotify-q {
+	font-size:125%;
+	border:2px;
+	background: rgb(200,200,200);
+	color:white;
+	padding:5px;
+	border-radius: 2px;
+}
+
+#spotify-q:focus {
+	background: rgb(150,150,150);
+	outline: none;
+}
+
+hr {
+    border: 0px;
+    height: 4px;
+    background-image: linear-gradient(to right, #2ebd59, rgba(0, 0, 0, 0));
+}
+
+li {
+	list-style-type: square;
+	color:black;
 }

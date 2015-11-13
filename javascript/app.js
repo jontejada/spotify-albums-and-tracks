@@ -4,7 +4,7 @@
 (function(){
   $(document).ready(function(){
     bootstrapSpotifySearch();
-  })
+  });
 })();
 
 /**
@@ -39,18 +39,18 @@ function bootstrapSpotifySearch(){
         // Which contains the first 20 matching elements.
         // In our case they are artists.
         artists.items.forEach(function(artist){
-          var artistLi = $("<li>" + artist.name + " - " + artist.id + "</li>")
+          var artistLi = $("<li><b>" + artist.name + "</b> - " + artist.id + "</li>");
           artistLi.attr('data-spotify-id', artist.id);
           outputArea.append(artistLi);
 
           artistLi.click(displayAlbumsAndTracks);
-        })
+        });
       });
 
       // Attach the callback for failure 
       // (Again, we could have used the error callback direcetly)
       spotifyQueryRequest.fail(function (error) {
-        console.log("Something Failed During Spotify Q Request:")
+        console.log("Something Failed During Spotify Q Request:");
         console.log(error);
       });
   });
@@ -76,21 +76,19 @@ function displayAlbumsAndTracks(event) {
         url:'https://api.spotify.com/v1/albums/'+album.id
       });
       releaseDateRequest.done(function(data){
-        //console.log(albumLi);
         albumLi.append(' released on ' + data.release_date + '<ul id="'+data.id+'"></ul>');
-        //console.log(albumLi);
         appendToMe.append(albumLi);
         data.tracks.items.forEach(function(track){
-          //console.log(track.name);
           var appendTrackHere = $('#'+data.id);
-          //console.log(appendTrackHere);
           appendTrackHere.append('<li>'+track.name+'</li>');
         });
       });
-      //appendToMe.append(albumLi);
     });
   });
 }
+
+
+
 
 
 // function doReleaseDateRequest(input){
