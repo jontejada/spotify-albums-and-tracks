@@ -66,43 +66,44 @@ function displayAlbumsAndTracks(event) {
     dataType:'json',
     url: 'https://api.spotify.com/v1/artists/'+artistID+'/albums?limit=4'
   });
-  // //var albumIdList = [];
-  // var albumIdSearch = 'https://api.spotify.com/v1/albums?ids=';
   albumsRequest.done(function(data){
     appendToMe.html('');
     data.items.forEach(function(album){
-      var albumLi = $('<li><b>' + album.name + '<b></li>');
-      //var theDate;
+      var albumLi = $('<li><b>' + album.name + '</b></li>');
       var releaseDateRequest = $.ajax({
         type:'GET',
         dataType:'json',
         url:'https://api.spotify.com/v1/albums/'+album.id
       });
       releaseDateRequest.done(function(data){
-        albumLi.append(' released on ' + data.release_date);
-        //console.log(data.release_date);
-        //theDate = data.release_date;
-        //console.log(theDate);
+        //console.log(albumLi);
+        albumLi.append(' released on ' + data.release_date + '<ul id="'+data.id+'"></ul>');
+        //console.log(albumLi);
+        appendToMe.append(albumLi);
+        data.tracks.items.forEach(function(track){
+          //console.log(track.name);
+          var appendTrackHere = $('#'+data.id);
+          //console.log(appendTrackHere);
+          appendTrackHere.append('<li>'+track.name+'</li>');
+        });
       });
-      //console.log(theDate);
-      
-      appendToMe.append(albumLi);
+      //appendToMe.append(albumLi);
     });
   });
 }
 
 
-function doReleaseDateRequest(input){
-  var releaseDateRequest = $.ajax({
-    type:'GET',
-    dataType:'json',
-    url:'https://api.spotify.com/v1/albums/'+input
-  });
-  releaseDateRequest.done(function(data){
-    //console.log(data.release_date);
-    return data.release_date;
-  });
-}
+// function doReleaseDateRequest(input){
+//   var releaseDateRequest = $.ajax({
+//     type:'GET',
+//     dataType:'json',
+//     url:'https://api.spotify.com/v1/albums/'+input
+//   });
+//   releaseDateRequest.done(function(data){
+//     //console.log(data.release_date);
+//     return data.release_date;
+//   });
+// }
 
 /* YOU MAY WANT TO CREATE HELPER FUNCTIONS OF YOUR OWN */
 /* THEN CALL THEM OR REFERENCE THEM FROM displayAlbumsAndTracks */
