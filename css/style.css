@@ -1,16 +1,20 @@
 body{
-	margin:40px auto;
-	max-width:1100px;
-	line-height:1.6;
+	margin:0 100px;
+	max-width:900px;
+	line-height:1.4;
 	font-size:18px;
-	color:#444;
-	padding:0 10px;
+	/*color:#444;*/
+	/*padding:0 10px;*/
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	color:#2ebd59;
 }
 
-h1, h2, h3{
+h2, h3{
 	line-height:1;
+}
+
+h1 {
+	font-size: 400%;
 }
 
 #q-results li {
@@ -32,10 +36,11 @@ h1, h2, h3{
 #spotify-q {
 	font-size:125%;
 	border:2px;
-	background: rgb(200,200,200);
+	background: rgba(200,200,200,0.75);
 	color:white;
 	padding:5px;
 	border-radius: 2px;
+	text-align: center;
 }
 
 #spotify-q:focus {
@@ -44,12 +49,41 @@ h1, h2, h3{
 }
 
 hr {
-    border: 0px;
-    height: 4px;
+    border: 0;
+    height: 3px;
     background-image: linear-gradient(to right, #2ebd59, rgba(0, 0, 0, 0));
 }
 
+
 li {
-	list-style-type: square;
-	color:black;
+	list-style-type: none;
+}
+
+li li {
+	list-style-type: decimal-leading-zero;
+	color:rgb(150,150,150);
+	font-size: 80%;
+}
+
+.fade {
+	color:rgb(150,150,150);
+	font-weight: normal;
+}
+
+/*
+#parentdiv {
+	position: absolute;
+}
+*/
+#titlediv {
+	position: absolute;
+	z-index: 1;
+	margin-top: -35px;
+	margin-left: -75px;
+}
+
+#searchdiv {
+	position: absolute;
+	z-index: 2;
+	margin-top: 90px;
 }

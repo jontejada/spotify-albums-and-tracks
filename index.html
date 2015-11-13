@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>API's in action</title>
+    <title>APIs in action</title>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js" charset="utf-8"></script>
     <script src="javascript/app.js" charset="utf-8"></script>
@@ -10,18 +10,27 @@
 
   </head>
   <body>
-  	<!-- <h1> Music Is Fun </h1> -->
-      <div>
-        <h2>Spotify Search</h2>
-        <div>
-          <label for="spotify-q"></label>
-          <input type="text" name="q" value="" id="spotify-q">
-          <input type="button" name="name" value=" Search Artists " id="spotify-q-button">
-          <h3>Results: (click for albums)</h3>
-          <div id="q-results" class="results"></div>
+      <div id='parentdiv'>
+        
+        <div id='titlediv'>
+          <h1>Spotify Search</h1>
         </div>
-        <hr>
+
+        <div id='searchdiv'>
+          <label for="spotify-q"></label>
+          <input type="text" name="q" value="xx" id="spotify-q">
+          <input type="button" name="name" value="   Search Artists   " id="spotify-q-button">
+          <h3>Artist & ID <span class='fade'>click for albums & tracks</span></h3>
+          <div id="q-results" class="results"></div>
+          <hr>
+          <div id='albums-and-tracks'></div>
+        </div>
+
+<!--         <div id='artdiv'>
+          stuff
+        </div>
+ -->        
       </div>
-      <div id='albums-and-tracks'></div>
+      
   </body>
 </html>

@@ -39,7 +39,7 @@ function bootstrapSpotifySearch(){
         // Which contains the first 20 matching elements.
         // In our case they are artists.
         artists.items.forEach(function(artist){
-          var artistLi = $("<li><b>" + artist.name + "</b> - " + artist.id + "</li>");
+          var artistLi = $("<li><b>" + artist.name + "</b>   <span class='fade'>" + artist.id + "</span></li>");
           artistLi.attr('data-spotify-id', artist.id);
           outputArea.append(artistLi);
 
@@ -56,13 +56,13 @@ function bootstrapSpotifySearch(){
   });
 }
 
-//helper stuff
+// move helper stuff here ->
+
 
 /* COMPLETE THIS FUNCTION! */
 function displayAlbumsAndTracks(event) {
   var appendToMe = $('#albums-and-tracks');
   var artistID = $(this).attr('data-spotify-id'); //changed 'event.target' to 'this' to fix bug introduced by <b> tag
-  console.log(artistID); //artistID is sometimes undefined
   var albumsRequest;
   albumsRequest = $.ajax({
     type:'GET',
@@ -71,6 +71,7 @@ function displayAlbumsAndTracks(event) {
   });
 
   albumsRequest.done(function(data){
+    albumArt(data);
     appendToMe.html('');
 
     data.items.forEach(function(album){
@@ -82,7 +83,7 @@ function displayAlbumsAndTracks(event) {
       });
 
       releaseDateRequest.done(function(data){
-        albumLi.append(' released on ' + data.release_date + '<ul id="'+data.id+'"></ul>');
+        albumLi.append('<span class="fade"> released on ' + data.release_date + '</span><ul id="'+data.id+'"></ul><hr>');
         appendToMe.append(albumLi);
         //data is the album object with id string identifying the album and tracks object (with an items array containing track objects with names)
         data.tracks.items.forEach(function(track){
@@ -95,6 +96,12 @@ function displayAlbumsAndTracks(event) {
     });
   }); // albumsRequest.done()
 
+}
+
+
+function albumArt(albumObj) {
+  console.log(albumObj.items[0].images[0].url);
+  $('body').css('background-image', 'url(' + albumObj.items[0].images[2].url + ')').css('background-repeat','no-repeat');
 }
 
 
