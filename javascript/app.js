@@ -60,6 +60,7 @@ function bootstrapSpotifySearch(){
 function displayAlbumsAndTracks(event) {
   var appendToMe = $('#albums-and-tracks');
   var artistID = $(event.target).attr('data-spotify-id');
+  console.log(artistID); //artistID is sometimes undefined
   var albumsRequest;
   albumsRequest = $.ajax({
     type:'GET',
@@ -91,6 +92,12 @@ function displayAlbumsAndTracks(event) {
 
 
 
+/* YOU MAY WANT TO CREATE HELPER FUNCTIONS OF YOUR OWN */
+/* THEN CALL THEM OR REFERENCE THEM FROM displayAlbumsAndTracks */
+/* THATS PERFECTLY FINE, CREATE AS MANY AS YOU'D LIKE */
+
+//JUNKYARD
+
 // function doReleaseDateRequest(input){
 //   var releaseDateRequest = $.ajax({
 //     type:'GET',
@@ -102,10 +109,6 @@ function displayAlbumsAndTracks(event) {
 //     return data.release_date;
 //   });
 // }
-
-/* YOU MAY WANT TO CREATE HELPER FUNCTIONS OF YOUR OWN */
-/* THEN CALL THEM OR REFERENCE THEM FROM displayAlbumsAndTracks */
-/* THATS PERFECTLY FINE, CREATE AS MANY AS YOU'D LIKE */
 
 /*partiall working but too complicated 
 function displayAlbumsAndTracks(event) {
