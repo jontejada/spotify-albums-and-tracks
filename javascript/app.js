@@ -42,6 +42,7 @@ function bootstrapSpotifySearch(){
           var artistLi = $("<li><b>" + artist.name + "</b>   <span class='fade'>" + artist.id + "</span></li>");
           artistLi.attr('data-spotify-id', artist.id);
           outputArea.append(artistLi);
+          console.log(artist);
 
           artistLi.click(displayAlbumsAndTracks);
         });
@@ -61,6 +62,7 @@ function bootstrapSpotifySearch(){
 
 /* COMPLETE THIS FUNCTION! */
 function displayAlbumsAndTracks(event) {
+  debugger;
   var appendToMe = $('#albums-and-tracks');
   var artistID = $(this).attr('data-spotify-id'); //changed 'event.target' to 'this' to fix bug introduced by <b> tag
   var albumsRequest;
