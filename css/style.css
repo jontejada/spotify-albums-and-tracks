@@ -15,6 +15,7 @@ h2, h3{
 
 h1 {
 	font-size: 400%;
+	text-shadow: 0 0 3px white ;
 }
 
 #q-results li {
@@ -87,3 +88,4 @@ li li {
 	z-index: 2;
 	margin-top: 90px;
 }
+
